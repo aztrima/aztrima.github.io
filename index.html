@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<style type="text/css">
+
+	body {
+		background: pink;
+		color: white;
+	}
+	p3{
+		color: black;
+		font: 2em Monaco;
+		font-weight: 800;
+	}
+	p2{
+		color: black;
+		font: 1.1em Arial;
+		font-weight: 600;
+	}
+	p{
+		color: black;
+		font: 1em Arial;
+	}
+	.TextWrap {
+		float: right;
+		margin-right: 750px;
+	}
+	.TextWrap1 {
+		float: right;
+		margin-right: 580px;
+	}
+	.TextWrap2 {
+		float: right;
+		margin-right: 560px;
+	}
+</style>
+
+</head>
+
+<body>
+	<div align="left">
+	<p3>Do You Smell? </p3> <br>
+	<br>
+	<p2>How much do you sleep?</p2>
+	<p style="float: right; clear: left"><img class="TextWrap1" src="https://i.imgur.com/2x9ECUK.gif" height="100px" width="150px"></p>
+	<p>
+	<input type="radio" name="choice" value="min4"> Less than 4 hours <br>
+	<input type="radio" name="choice" value="4t6"> 4-6 hours <br>
+	<input type="radio" name="choice" value="7t9"> 7-9 hours <br>
+	<input type="radio" name="choice" value="mor9"> More than 9 hours <br>
+	</p>
+	<p2>Do you like Cheese?</p2>
+	<p style="float: right; clear: left"><img class="TextWrap" src="https://media1.giphy.com/media/fCUCJRbwzad0LCGq2o/source.gif" height="50px" width="90px"></p>
+	<p>
+	<input type="radio" name="choice1" value="cyes"> Yes <br>
+	<input type="radio" name="choice1" value="cno"> No <br>
+	</p>
+	<p2>How often do you shower?</p2>
+	<p style="float: right; clear: left"><img class="TextWrap2" src="https://media.tenor.com/images/65e79e6943035f5b25b63a756b87b6e9/tenor.gif" height="135px" width="150px"></p>
+	<form>
+	<p>
+	<input type="radio" name="choice2" value="ed"> Every day <br>
+	<input type="radio" name="choice2" value="eod"> Every other day <br>
+	<input type="radio" name="choice2" value="2t4"> Every 2-3 days <br>
+	<input type="radio" name="choice2" value="5t6"> Every 4-6 days <br>
+	<input type="radio" name="choice2" value="oaw"> Once a Week or Longer <br>
+	</form>
+	</p>
+	<button onclick="submitAnswer()">Submit</button>
+	</div>
+
+	<script> 
+	var submitAnswer = function() {
+
+		var radios1 = document.getElementsByName("choice");
+		var val1 = "";
+		for (var i = 0, length = radios1.length; i < length; i++) {
+			if (radios1[i].checked) {
+				val1 = radios1[i].value;
+				break;
+			}
+		}
+		var radios2 = document.getElementsByName("choice1");
+		var val2 = "";
+		for (var i = 0, length = radios2.length; i < length; i++) {
+			if (radios2[i].checked) {
+				val2 = radios2[i].value;
+				break;
+			}
+		}
+		var radios3 = document.getElementsByName("choice2");
+		var val3 = "";
+		for (var i = 0, length = radios3.length; i < length; i++) {
+			if (radios3[i].checked) {
+				val3 = radios3[i].value;
+				break;
+			}
+		}
+		
+		var count = 0;
+		if (val1 == "") {
+			alert("please select choice answer");
+		} else if ( val1 == "min4") {
+			count = count + 1;
+		} else if ( val1 == "4t6") {
+			count = count + 0.5;
+		} else if ( val1 == "mor9") {
+			count = count + 1;
+		} else {
+			count = count;
+		}
+
+		if (val2 == "") {
+			alert("please select choice answer");
+		} else if ( val2 == "cyes") {
+			count = count + 1;
+		} else {
+			count = count;
+		}
+
+		if (val1 == "") {
+			alert("please select choice answer");
+		} else if (val3 == "2t4") {
+			count = count + 1;
+		} else if ( val3 == "5t6") {
+			count = count + 1;
+		} else if ( val3 == "oaw") {
+			count = count + 2;
+		} else {
+			count = count;
+		}
+
+		if (count >= 3.5) {
+			alert("You smell.");
+		} else if (count >= 2) {
+			alert("You kinda smell.");
+		} else if (count < 2) {
+			alert("You don't smell.");
+		} else {
+			alert("problem");
+		}
+	};
+	</script>
+
+</body>
+</html>
